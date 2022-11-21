@@ -5,6 +5,8 @@ class FarmsController < ApplicationController
 
   def show
     @farm = Farm.find(params[:id])
+    @comments = @farm.comments
+    @comment = Comment.new
   end
 
   def new

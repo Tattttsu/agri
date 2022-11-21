@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
 
-  resources :farms
+  resources :farms do
+    resource :likes, only: [:create, :destroy]
+    resource :comments, only: [:create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
