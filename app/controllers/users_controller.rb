@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where.not(id: current_user.id)
+    if current_user.present?
+      @users = User.where.not(id: current_user.id)
+    else
+      flash[:notice] = "ログインしてください"
+      redirect_to request.referer
+    end
   end
 
   def followings
