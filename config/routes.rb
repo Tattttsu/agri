@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :farms do
     resource :likes, only: [:create, :destroy]
-    resource :comments, only: [:create, :destroy]
+    resources :comments, only: [:edit, :update, :create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
