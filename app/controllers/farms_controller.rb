@@ -30,6 +30,6 @@ class FarmsController < ApplicationController
   private
 
     def farm_params
-      params.require(:farm).permit(:name)
+      params.require(:farm).permit(:name, vege_tag_ids: [])
     end
 end

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+VegeTag.create([
+  { name: 'キャベツ' },
+  { name: 'レタス' },
+  { name: '人参' },
+  { name: 'じゃがいも' },
+  { name: 'さつまいも' },
+  { name: 'きゅうり' },
+  { name: 'なす' },
+  { name: 'ピーマン' },
+  { name: 'ほうれん草' },
+  { name: 'トマト' }
+])
