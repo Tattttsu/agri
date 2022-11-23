@@ -24,7 +24,26 @@ class FarmsController < ApplicationController
     end
   end
 
+  def edit
+    @farm = Farm.find(params[:id])
+  end
+
+  def update
+    @farm = Farm.find(params[:id])
+    if @farm.update(farm_params)
+      redirect_to @farm
+      flash[:success] = "更新しました"
+    else
+      render "farms/edit"
+      flash.now[:alert] = "更新に失敗しました"
+    end
+  end
+
   def destroy
+    @farm = Farm.find(params[:id])
+    @farm.destroy
+    flash[:success] = "削除しました"
+    redirect_to farms_path
   end
 
   private
