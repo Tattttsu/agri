@@ -12,13 +12,13 @@
   <div class="container">
     <div class="columns text-center">
       <div class="column is-5">
-        <%= form_with(url: user_session_path, scope: :session, local: true) do |f| %>
+        <%= form_with( model: @user, url: user_session_path, local: true) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field ">
           <%= f.label :email, class: "label" %>
           <p class="control">
-            <%= f.text_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "input w-50 p-3 mb-5" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "input w-50 p-3 mb-5" %>
           </p>
         </div>
 
@@ -28,6 +28,13 @@
           <%= f.password_field :password, autocomplete: "new-password", :placeholder => "パスワード", class: "input w-50 p-3 mb-5" %>
         </p>
         </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
 
         <div class="actions">
           <%= f.submit "ログイン", class: "btn btn-primary w-50 p-3" %>
