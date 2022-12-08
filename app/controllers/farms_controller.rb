@@ -18,7 +18,7 @@ class FarmsController < ApplicationController
     @farm.user_id = current_user.id
     if @farm.save
       flash[:success] = "投稿しました"
-      redirect_to root_url
+      redirect_to @farm
     else
       render "new"
     end
@@ -49,6 +49,6 @@ class FarmsController < ApplicationController
   private
 
     def farm_params
-      params.require(:farm).permit(:name, vege_tag_ids: [])
+      params.require(:farm).permit(:name, :address, :image, vege_tag_ids: [] )
     end
 end

@@ -8,4 +8,6 @@ class Farm < ApplicationRecord
 
   validates :user_id, presence: true
   validates :name, presence: true
+
+  mount_uploader :image, ImageUploader
 end

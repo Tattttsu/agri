@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="card-body">
+        <%= image_tag @farm.image.url %>
+        <h5 class="card-title">
+          id<%= @farm.id %></h5>
+        <p class="card-text">
+          名<%= @farm.name %></p>
+        <p class="card-text">
+          <small class="text-muted">
+            更新日：<%= @farm.updated_at.strftime("%Y-%m-%d") %>
+          </small>
+        </p>
+        <% if current_user.already_liked?(@farm) %>
+          <%= link_to farm_likes_path(@farm), method: :delete do %>
+            <i class="far fa-heart"></i>
+            お気に入りを外す
+          <% end %>
+        <% else %>
+          <%= link_to farm_likes_path(@farm), method: :post do %>
+            <i class="far fa-heart"></i>
+            お気に入りに追加
+          <% end %>
+        <% end %>
+        <%= @farm.likes.count %>
+        <% if @farm.user == current_user %>
+          <%= link_to '編集', edit_farm_path(@farm), method: :get, class: "btn btn-success" %>
+          <%= link_to '削除', farm_path(@farm), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+        <% @farm.vege_tags.each do |tag| %>
+          <span>
+            <%= tag.name %>
+          </span>
+        <% end %>
+      <div>
+        <%= form_with(model: [@farm, @comment], method: :post) do |f| %>
+          <%= f.text_area :content %>
+          <% f.hidden_field :farm_id, value: @farm.id %>
+          <%= f.submit 'コメントする' %>
+        <% end %>
+      </div>
+      <% @comments.each do |comment| %>
+        <div>
+          <%= comment.content %>
+          <% if comment.user_id == current_user.id %>
+            <%= link_to "編集", edit_farm_comment_path(@farm, comment), method: :get %>
+            <%= link_to "削除", farm_comment_path(@farm, comment), method: :delete %>
+          <% elsif @farm.user_id == current_user.id %>
+            <%= link_to "削除", farm_comment_path(@farm, comment), method: :delete %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>
