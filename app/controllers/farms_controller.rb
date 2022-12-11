@@ -46,6 +46,11 @@ class FarmsController < ApplicationController
     redirect_to farms_path
   end
 
+  def search
+    @farms = Farm.where("name LIKE ? OR address LIKE ? ", "%#{params[:word]}%", "%#{params[:word]}%" )
+    @farms = @farms.uniq
+  end
+
   private
 
     def farm_params
