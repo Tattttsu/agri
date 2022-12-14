@@ -14,10 +14,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.navbar::before,.navbar::after{
-  content: none;
-}
-
-.navbar-brand{
-  vertical-align: middle;
+.navbar .nav-link{
+  color: white !important;
+  font-size: 10px;
+  font-weight: 700;
 }
