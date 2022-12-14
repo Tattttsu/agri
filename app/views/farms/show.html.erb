@@ -51,7 +51,7 @@
       </div>
       <div>
         <h3>特徴</h3>
-        <%= @farm.feature %>
+        <%= safe_join(@farm.feature.split("\n"),tag(:br)) %>
       </div>
       <hr>
       <div class="form-block mt-5">
