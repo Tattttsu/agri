@@ -1,5 +1,26 @@
-<% provide(:button_text, "アカウントを編集する") %>
-<div class="container">
-  <h2>アカウント編集</h2>
-  <%= render "users/shared/form.html.erb" %>
+<div class="text-center">
+  <div class="form">
+    <%= form_with url: user_registration_path,  model: @user, local: true do |f| %>
+    <%= render "users/shared/error_messages" %>
+
+    <div class= "field mt-5">
+      <% f.label :name, class: "label" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "名前", class: "input w-50 p-3 mb-5" %>
+    </div>
+
+    <div class="field">
+      <% f.label :email, class: "label" %>
+      <%= f.text_field :email, autofocus: true, placeholder: "メールアドレス", class: "input w-50 p-3 mb-5" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image, "写真の選択", class: "label" %>
+      <%= f.file_field :image, class: "input w-50 m-auto pb-5" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "編集", class: "btn btn-primary w-50 p-3" %>
+    </div>
+    <% end %>
+  </div>
 </div>
