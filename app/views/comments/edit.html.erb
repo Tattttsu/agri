@@ -1,0 +1,9 @@
+<div class="form ml-5">
+  <%= form_with(model: [@farm, @comment]) do |f| %>
+    <%= f.text_area :content, autofocus: true, placeholder: "コメント", class: "input w-50 p-3 mb-5" %>
+    <% f.hidden_field :farm_id, value: @farm.id %>
+    <div class="actions">
+      <%= f.submit "編集する", class: "btn btn-primary w-50 p-3" %>
+    </div>
+  <% end %>
+</div>
