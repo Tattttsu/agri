@@ -19,8 +19,8 @@
       <div class="user-box d-flex">
         <div class="user-icon">
           <%= link_to user_path(@farm.user) do %>
-            <% if @farm.user.image.present? %>
-              <%= image_tag @farm.user.image.url %>
+            <% if @farm.user.icon.present? %>
+              <%= image_tag @farm.user.icon.url %>
             <% else %>
               <%= image_tag "icon" %>
             <% end %>
@@ -69,8 +69,8 @@
         <div class="comment-row d-flex">
           <div class="user-icon">
             <%= link_to user_path(comment.user) do %>
-              <% if comment.user.image.present? %>
-                <%= image_tag comment.user.image.url %>
+              <% if comment.user.icon.present? %>
+                <%= image_tag comment.user.icon.url %>
               <% else %>
                 <%= image_tag "icon" %>
               <% end %>

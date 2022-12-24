@@ -22,7 +22,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :icon, IconUploader
 
   def already_liked?(farm)
     self.likes.exists?(farm_id: farm.id)
