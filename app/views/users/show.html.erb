@@ -9,7 +9,9 @@
         <% end %>
       </div>
       <h1 class="fw-light">
-        <%= @user.id %>
+        <%= @user.name %>
+        <%= @user.email %>
+
       </h1>
       <p class="text-small">
         <%= link_to @user.followings.count, followings_user_path(@user) %>フォロー
