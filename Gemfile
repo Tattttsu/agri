@@ -59,3 +59,6 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'gmaps4rails'
+gem 'geocoder'
+gem "dotenv-rails"

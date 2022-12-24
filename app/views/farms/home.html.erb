@@ -8,3 +8,28 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.7828, lng:139.9653},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 35, lng:139},
+    map: map
+  });
+}
+   </script>
+   <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+   </script>
+   <style type="text/css">
+     #map { height: 300px;
+           width: 40%;}
+   </style>
+   <div id="map"></div>
