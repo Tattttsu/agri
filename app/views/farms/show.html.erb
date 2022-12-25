@@ -42,16 +42,20 @@
         <% end %>
       <% end %>
       <div class="mt-5">
-        <h3>扱っている野菜</h3>
-        <% @farm.vege_tags.each do |tag| %>
-          <ul>
-            <li><%= tag.name %></li>
-          </ul>
+        <% if @farm.vege_tags.present? %>
+          <h3>扱っている野菜</h3>
+          <% @farm.vege_tags.each do |tag| %>
+            <ul>
+              <li><%= tag.name %></li>
+            </ul>
+          <% end %>
         <% end %>
       </div>
       <div>
-        <h3>特徴</h3>
-        <%= safe_join(@farm.feature.split("\n"),tag(:br)) %>
+        <% if @farm.feature.present? %>
+          <h3>特徴</h3>
+          <%= safe_join(@farm.feature.split("\n"),tag(:br)) %>
+        <% end %>
       </div>
       <hr>
       <div class="form-block mt-5">

@@ -6,8 +6,7 @@ class Farm < ApplicationRecord
   has_many :tag_relations, dependent: :destroy
   has_many :vege_tags, through: :tag_relations, dependent: :destroy
 
-  validates :user_id, presence: true
-  validates :name, presence: true
+  validates :user_id, :name, :address, presence: true
 
   mount_uploader :image, ImageUploader
 

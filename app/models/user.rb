@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :name, length: { minimum: 1, maximum: 15 }
+
   has_many :farms
   has_many :comments
   has_many :likes, dependent: :destroy
@@ -13,9 +15,6 @@ class User < ApplicationRecord
 
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
-
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
