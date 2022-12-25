@@ -11,25 +11,31 @@
 
 <script type="text/javascript">
 let map
+let marker = []
+let info = []
+const farms = gon.farms
+
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.7828, lng:139.9653},
-    zoom: 12,
+    center: {lat: 34.666536, lng:133.9180779},
+    zoom: 15,
   });
 
-  marker = new google.maps.Marker({
-    position:  {lat: 35, lng:139},
+  for (let i = 0; i < farms.length; i++){
+  marker[i] = new google.maps.Marker({
+    position:  {lat: farms[i].latitude, lng: farms[i].longitude},
     map: map
   });
+  }
 }
    </script>
    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
    </script>
    <style type="text/css">
      #map { height: 300px;
-           width: 40%;}
+           width: 80%;}
    </style>
-   <div id="map"></div>
+   <div id="map" class="mx-auto"></div>

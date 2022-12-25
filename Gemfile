@@ -62,3 +62,4 @@ gem 'mini_magick'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem "dotenv-rails"
+gem "gon"

@@ -1,4 +1,8 @@
 class FarmsController < ApplicationController
+  def home
+    gon.farms = Farm.all
+  end
+
   def index
     @farms = Farm.all
   end
@@ -7,6 +11,7 @@ class FarmsController < ApplicationController
     @farm = Farm.find(params[:id])
     @comments = @farm.comments
     @comment = Comment.new
+    gon.farm = @farm
   end
 
   def new
