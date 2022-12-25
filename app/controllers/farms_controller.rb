@@ -1,8 +1,4 @@
 class FarmsController < ApplicationController
-  def home
-    gon.farms = Farm.all
-  end
-
   def index
     @farms = Farm.all
   end
@@ -51,13 +47,22 @@ class FarmsController < ApplicationController
     redirect_to farms_path
   end
 
+  def home
+    gon.farms = Farm.all
+  end
+
   def search
     @farms = Farm.where("name LIKE ? OR address LIKE ? ", "%#{params[:word]}%", "%#{params[:word]}%" )
     @farms = @farms.uniq
   end
 
-  private
+  def mapsearch
+    @farms = Farm.where("name LIKE ? OR address LIKE ? ", "%#{params[:word]}%", "%#{params[:word]}%" )
+    gon.farms = @farms.uniq
+    gon.first_farm = @farms.where.not(latitude: nil).first
+  end
 
+  private
     def farm_params
       params.require(:farm).
       permit(:name, :address, :feature, :image, :latitude, :longitude, vege_tag_ids: [] )
