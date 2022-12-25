@@ -1,1 +1,8 @@
-<%= render "farms/shared/index.html.erb" %>
+<%= content_for :search_url do %>
+  search
+<% end %>
+<h1 class="mx-5">農場一覧</h1>
+<div class="container">
+  <%= render "farms/shared/search_form.html.erb" %>
+  <%= render "farms/shared/index.html.erb" %>
+</div>

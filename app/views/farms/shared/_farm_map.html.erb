@@ -1,41 +1,30 @@
-<div class="container">
-  <div class="search_form my-5">
-    <div class="row">
-      <%= form_with url: mapsearch_path, class: "col-8", local: true, method: :get do |f| %>
-        <%= f.text_field :word, size: 40 %>
-        <%= f.submit "検索", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
+<script type="text/javascript">
+let map
+let marker = []
+let info = []
+let farms = gon.farms
+let first_farm = gon.first_farm
 
-  <script type="text/javascript">
-  let map
-  let marker = []
-  let info = []
-  let farms = gon.farms
-  let first_farm = gon.first_farm
+function initMap(){
+  geocoder = new google.maps.Geocoder()
 
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= yield :first_farm_latitude %>, lng: <%= yield :first_farm_longitude %>},
+    zoom: 15,
+  });
 
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: <%= yield :first_farm_latitude %>, lng: <%= yield :first_farm_longitude %>},
-      zoom: 15,
-    });
-
-    for (let i = 0; i < farms.length; i++){
-    marker[i] = new google.maps.Marker({
-      position:  {lat: farms[i].latitude, lng: farms[i].longitude},
-      map: map
-    });
-    }
+  for (let i = 0; i < farms.length; i++){
+  marker[i] = new google.maps.Marker({
+    position:  {lat: farms[i].latitude, lng: farms[i].longitude},
+    map: map
+  });
   }
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-  </script>
-  <style type="text/css">
-    #map { height: 300px;
-    width: 100%;}
-  </style>
-  <div id="map" class="mx-auto"></div>
-</div>
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
+<style type="text/css">
+  #map { height: 300px;
+  width: 100%;}
+</style>
+<div id="map" class="mx-auto"></div>
