@@ -9,12 +9,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to '野菜販売所一覧', farms_path, class: "nav-link" %>
+          </li>
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to '投稿フォーム', new_farm_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '投稿一覧', farms_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to 'マイページ', user_path(current_user), class: "nav-link" %>
