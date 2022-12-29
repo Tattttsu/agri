@@ -1,4 +1,5 @@
 class FarmsController < ApplicationController
+  before_action :authenticate_user! ,only: ["new", "create", "destroy", "edit", "update"]
   def index
     @farms = Farm.all
   end

@@ -11,20 +11,21 @@
       <h1 class="fw-light">
         <%= @user.name %>
         <%= @user.email %>
-
       </h1>
       <p class="text-small">
         <%= link_to @user.followings.count, followings_user_path(@user) %>フォロー
         <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー
       </p>
-      <% if @user == current_user %>
-        <p class="lead text-muted"><%= current_user.name %>でサインインしています</p>
-        <%= link_to "編集", edit_user_registration_path(@user), class: "btn btn-primary" %>
-      <% else %>
-        <% if @user.is_followed_by?(current_user) %>
-          <%=link_to "フォロー解除", user_relationships_path(@user), class: "btn btn-danger", method: :delete %>
+      <% if current_user.present? %>
+        <% if @user == current_user %>
+          <p class="lead text-muted"><%= current_user.name %>でサインインしています</p>
+          <%= link_to "編集", edit_user_registration_path(@user), class: "btn btn-primary" %>
         <% else %>
-          <%=link_to "フォロー", user_relationships_path(@user), class: "btn btn-primary", method: :post %>
+          <% if @user.is_followed_by?(current_user) %>
+            <%=link_to "フォロー解除", user_relationships_path(@user), class: "btn btn-danger", method: :delete %>
+          <% else %>
+            <%=link_to "フォロー", user_relationships_path(@user), class: "btn btn-primary", method: :post %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
