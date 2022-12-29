@@ -29,10 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
+    Comment.find(params[:id]).destroy
     flash[:success] = "コメントを削除しました"
-    @farm = Farm.find(params[farm_id])
+    @farm = Farm.find(params[:farm_id])
     render :comment
   end
 
