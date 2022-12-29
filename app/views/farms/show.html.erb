@@ -31,17 +31,9 @@
         </div>
       </div>
       <% if current_user.present? %>
-        <% if current_user.already_liked?(@farm) %>
-          <%= link_to farm_likes_path(@farm), method: :delete do %>
-            <i class="far fa-heart"></i>
-            お気に入りを外す
-          <% end %>
-        <% else %>
-          <%= link_to farm_likes_path(@farm), method: :post do %>
-            <i class="far fa-heart"></i>
-            お気に入りに追加
-          <% end %>
-        <% end %>
+        <div id="like_button">
+          <%= render "likes/likes", farm: @farm %>
+        </div>
       <% end%>
       <div class="mt-5">
         <% if @farm.vege_tags.present? %>
