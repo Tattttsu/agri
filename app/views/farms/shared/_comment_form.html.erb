@@ -1,0 +1,9 @@
+<div class="form-block mt-5">
+  <% if current_user.present? %>
+    <%= form_with(model: [@farm, @comment], local: false) do |f|%>
+      <%= f.text_area :content, class: "form-control border-1",id: "comment_form", placeholder: "コメント...", rows: "1" %>
+      <% f.hidden_field :farm_id, value: @farm.id %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+  <% end %>
+</div>

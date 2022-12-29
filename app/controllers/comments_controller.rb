@@ -4,11 +4,10 @@ class CommentsController < ApplicationController
     @comment = @farm.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer
-      flash[:success] = "コメントを投稿しました"
+      flash.now[:notice] = 'コメントを投稿しました'
+      render :comment
     else
-      redirect_to request.referer
-      flash[:alert] = "コメントの投稿に失敗しました"
+      render "farms/show"
     end
   end
 
@@ -33,7 +32,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = "コメントを削除しました"
-    redirect_to request.referer
+    @farm = Farm.find(params[farm_id])
+    render :comment
   end
 
   private
