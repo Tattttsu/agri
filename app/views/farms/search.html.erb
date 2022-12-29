@@ -4,5 +4,5 @@
 <h1 class="mx-5">野菜販売所の検索結果</h1>
 <div class="container">
   <%= render "farms/shared/search_form.html.erb" %>
-  <%= render "farms/shared/index.html.erb" %>
+  <%= render "farms/shared/index.html.erb", farms: @farms %>
 </div>

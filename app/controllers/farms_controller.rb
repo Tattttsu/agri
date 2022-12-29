@@ -63,6 +63,11 @@ class FarmsController < ApplicationController
     gon.first_farm = @farms.where.not(latitude: nil).first
   end
 
+  def like_farms
+    likes = Like.where(user_id: current_user.id).pluck(:farm_id)
+    @farms = Farm.find(likes)
+  end
+
   private
     def farm_params
       params.require(:farm).
