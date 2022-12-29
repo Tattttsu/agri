@@ -1,7 +1,7 @@
 <div class="text-center">
   <div class="form">
     <%= form_with url: user_registration_path,  model: @user, local: true do |f| %>
-    <%= render "users/shared/error_messages" %>
+    <%= render "layouts/shared/error_messages",  object: f.object %>
 
     <div class= "field mt-5">
       <% f.label :name, class: "label" %>
