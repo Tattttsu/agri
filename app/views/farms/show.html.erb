@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="image-container">
+        <% if @farm.image.present? %>
+          <%= image_tag @farm.image.url, class: "post-profile-icon" %>
+        <% else %>
+          <%= image_tag "野菜", class: "post-profile-icon" %>
+        <% end %>
+      </div>
+      <% if @farm.user == current_user %>
+        <%= link_to '編集', edit_farm_path(@farm), method: :get, class: "btn btn-success" %>
+        <%= link_to '削除', farm_path(@farm), method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-6 ">
+      <h2><%= @farm.name%></h2>
+      <div class="user-box d-flex">
+        <div class="user-icon">
+          <%= link_to user_path(@farm.user) do %>
+            <% if @farm.user.icon.present? %>
+              <%= image_tag @farm.user.icon.url %>
+            <% else %>
+              <%= image_tag "icon" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="user-name">
+          <%= @farm.user.name %>
+        </div>
+      </div>
+      <% if current_user.present? %>
+        <div id="like_button">
+          <%= render "likes/likes", farm: @farm %>
+        </div>
+      <% end%>
+      <div class="mt-5">
+        <% if @farm.vege_tags.present? %>
+          <h3>扱っている野菜</h3>
+          <% @farm.vege_tags.each do |tag| %>
+            <ul>
+              <li><%= tag.name %></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <% if @farm.feature.present? %>
+          <h3>特徴</h3>
+          <%= safe_join(@farm.feature.split("\n"),tag(:br)) %>
+        <% end %>
+      </div>
+      <hr>
+      <%= render "farms/shared/comment_form" %>
+    </div>
+  </div>
+  <div id="comments_area">
+    <%= render "farms/shared/comment", farm: @farm %>
+  </div>
+  <% if @farm.latitude.present? && @farm.present? %>
+    <script type="text/javascript">
+      let map
+      const farm = gon.farm
+
+      function initMap(){
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: farm.latitude, lng: farm.longitude },
+          zoom: 12,
+        });
+
+        marker = new google.maps.Marker({
+          position:  {lat: farm.latitude, lng: farm.longitude },
+          map: map
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+    </script>
+    <style type="text/css">
+      #map { height: 300px; width: 100%;}
+    </style>
+    <div id="map"></div>
+  <% end %>
+</div>

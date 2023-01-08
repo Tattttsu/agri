@@ -1,0 +1,13 @@
+<%= content_for :search_url do %>
+  mapsearch
+<% end %>
+<% content_for :first_farm_latitude do %>
+  first_farm.latitude
+<% end %>
+<%= content_for :first_farm_longitude do %>
+  first_farm.longitude
+<% end %>
+<div class="container">
+  <%= render "farms/shared/search_form.html.erb" %>
+  <%= render "farms/shared/farm_map.html.erb" %>
+</div>
