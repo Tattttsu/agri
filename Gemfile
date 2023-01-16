@@ -64,3 +64,7 @@ gem 'geocoder'
 gem "dotenv-rails"
 gem "gon"
 gem "net-smtp"
+
+group :production do
+  gem 'unicorn'
+end
