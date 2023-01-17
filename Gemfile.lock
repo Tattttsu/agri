@@ -110,6 +110,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    date (3.3.3)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -161,6 +162,11 @@ GEM
     minitest (5.16.3)
     msgpack (1.6.0)
     multi_json (1.15.0)
+    net-imap (0.3.4)
+      date
+      net-protocol
+    net-pop (0.1.2)
+      net-protocol
     net-protocol (0.2.1)
       timeout
     net-scp (4.0.0)
@@ -315,6 +321,8 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   mini_magick
+  net-imap
+  net-pop
   net-smtp
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
