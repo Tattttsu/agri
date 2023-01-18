@@ -7,7 +7,7 @@
           <% if comment.user.icon.present? %>
             <%= image_tag comment.user.icon.url %>
           <% else %>
-            <%= image_tag asset_path("icon") %>
+            <%= image_tag "/icon.jpeg" %>
           <% end %>
         <% end %>
       </div>
