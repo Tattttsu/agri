@@ -5,7 +5,7 @@
         <% if @farm.image.present? %>
           <%= image_tag @farm.image.url, class: "post-profile-icon" %>
         <% else %>
-          <%= image_tag "野菜", class: "post-profile-icon" %>
+          <%= image_tag asset_path("野菜"), class: "post-profile-icon" %>
         <% end %>
       </div>
       <% if @farm.user == current_user %>
@@ -22,7 +22,7 @@
             <% if @farm.user.icon.present? %>
               <%= image_tag @farm.user.icon.url %>
             <% else %>
-              <%= image_tag "icon" %>
+              <%= image_tag asset_path("icon") %>
             <% end %>
           <% end %>
         </div>

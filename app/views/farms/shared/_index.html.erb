@@ -7,7 +7,7 @@
           <% if farm.image.present? %>
             <%= image_tag farm.image.url, class: "img-fluid" %>
           <% else %>
-            <%= image_tag "野菜", class: "img-fluid" %>
+            <%= image_tag asset_path("野菜"), class: "img-fluid" %>
           <% end %>
           <% end%>
         </div>
