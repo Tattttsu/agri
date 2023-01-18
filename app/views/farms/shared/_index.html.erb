@@ -12,9 +12,9 @@
           <% end%>
         </div>
         <div class="card-body">
-          <h4><%= farm.user.id %></h4>
           <p class="card-text text-truncate">
-            <%= farm.name %>
+            <h4><%= farm.name %></h4>
+            <h5><%= farm.user.name %></h5>
           </p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
