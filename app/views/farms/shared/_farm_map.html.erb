@@ -1,7 +1,7 @@
 <script type="text/javascript">
 let map
 let marker = []
-let info = []
+let infoWindow = []
 let farms = gon.farms
 let first_farm = gon.first_farm
 
@@ -14,17 +14,23 @@ function initMap(){
   });
 
   for (let i = 0; i < farms.length; i++){
-  marker[i] = new google.maps.Marker({
-    position:  {lat: farms[i].latitude, lng: farms[i].longitude},
-    map: map
-  });
+    marker[i] = new google.maps.Marker({
+      position:  {lat: farms[i].latitude, lng: farms[i].longitude},
+      map: map
+    });
+    let id = farms[i]['id']
+    infoWindow[i] = new google.maps.InfoWindow({
+      content: `<a href='/farms/${id}'>${farms[i].name}</a>`
+    });
+    marker[i].addListener("click", function(){
+      infoWindow[i].open(map, marker[i]);
+    });
   }
 }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= Rails.application.credentials.GOOGLE_MAP_API_KEY %>&callback=initMap">
 </script>
 <style type="text/css">
-  #map { height: 300px;
-  width: 100%;}
+  #map { height: 300px; width: 100%;}
 </style>
 <div id="map" class="mx-auto"></div>
