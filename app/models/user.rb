@@ -47,4 +47,11 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  def self.guest
+    find_or_create_by(name: "テストユーザー", email: "example@gmail.com") do |user|
+      user.password = "123456"
+    end
+  end
+
 end
