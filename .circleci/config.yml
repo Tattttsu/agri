@@ -6,13 +6,14 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:3.1.2-node-browsers
+      - image: circleci/ruby:2.5.1-node-browsers
         environment:
-          BUNDLER_VERSION: 2.3.18
+          BUNDLER_VERSION: 2.1.4
     steps:
       - checkout
       - ruby/install-deps
 
+  # 時間短縮のためテストを並列実行する
   test:
     parallelism: 3
     docker:
@@ -21,7 +22,7 @@ jobs:
           DB_HOST: 127.0.0.1
           RAILS_ENV: test
           BUNDLER_VERSION: 2.1.4
-      - image: circleci/mysql:8.0
+      - image: circleci/mysql:5.6
         command: --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
