@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:3.1.2-node-browsers
         environment:
           BUNDLER_VERSION: 2.3.18
     steps:
