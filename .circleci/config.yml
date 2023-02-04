@@ -20,12 +20,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: rails db:migrate
-          command: bundle exec rails db:migrate
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      - run:
           name: install dependencies
           command: |
             gem install bundler -v 2.3.18
@@ -33,6 +27,12 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
+      - run:
+          name: rails db:migrate
+          command: bundle exec rails db:migrate
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
       - run:
           name: Rubocop
           command: bundle exec rubocop
