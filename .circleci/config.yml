@@ -10,9 +10,6 @@ commands:
     steps:
       - checkout
       - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
 
 jobs:
   build:
