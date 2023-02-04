@@ -20,6 +20,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.3.18
+            bundle install --jobs=4 --retry=3 --path vendor/bundl
+      - run:
           name: Which bundler?
           command: bundle -v
       - run:
