@@ -1,50 +1,30 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  ruby: circleci/ruby@1.1.0
+  ruby: circleci/ruby@1.4.0
 
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
     docker:
-      - image: circleci/ruby:3.1.2-node-browsers
-        environment:
-          BUNDLER_VERSION: 2.1.4
+      - image: cimg/ruby:3.1.0
+    executor: ruby/default
     steps:
       - checkout
-      - ruby/install-deps
-
-  # 時間短縮のためテストを並列実行する
-  test:
-    parallelism: 3
-    docker:
-      - image: circleci/ruby:3.1.2-node-browsers
-        environment:
-          DB_HOST: 127.0.0.1
-          RAILS_ENV: test
-          BUNDLER_VERSION: 2.1.4
-      - image: circleci/mysql:5.6
-        command: --default-authentication-plugin=mysql_native_password
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          MYSQL_ROOT_HOST: '%'
-    steps:
-      - checkout
-      - ruby/install-deps
-      - run: mv config/database.yml.ci config/database.yml
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-      # Run rspec in parallel
-      - ruby/rspec-test
-      - ruby/rubocop-check
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
 
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  version: 2
-  build_and_test:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      - test:
-          requires:
-            - build
