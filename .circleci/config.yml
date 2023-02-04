@@ -1,57 +1,55 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.4
+  ruby: circleci/ruby@1.1.0
   node: circleci/node@2
-
-# setup
-commands:
-  setup:
-    steps:
-      - checkout
-      - ruby/install-deps
 
 jobs:
   build:
     docker:
-      - image: cimg/ruby:3.1.2
-        environment:
-          - BUNDLER_VERSION: 2.3.18
-          - RAILS_ENV: "test"
-    executor: ruby/default
+      - image: cimg/ruby:3.1.2-node
     steps:
-      - setup
+      - checkout
+      - ruby/install-deps
+      # Store bundle cache
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
   test:
+    parallelism: 3
     docker:
-      - image: circleci/ruby:3.1.2-node
-      - image: circleci/postgres:11.6-alpine
-        name: "db"
+      - image: cimg/ruby:2.7-node
+      - image: circleci/postgres:9.5-alpine
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
+          POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_DB: rails_blog_test
           POSTGRES_PASSWORD: ""
     environment:
-      BUNDLE_JOBS: "4"
+      BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      PGUSER: postgres
+      PGUSER: circleci-demo-ruby
       PGPASSWORD: ""
       RAILS_ENV: test
     steps:
-      - setup
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
       - run:
-          name: rails db:migrate
-          command: bundle exec rails db:migrate
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
-      - run:
-          name: Rspec
-          command: bundle exec rspec
+      # Run rspec in parallel
+      - ruby/rspec-test
+      - ruby/rubocop-check
 
 workflows:
   version: 2
-  test_and_deploy:
+  build_and_test:
     jobs:
       - build
       - test:
