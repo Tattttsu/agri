@@ -32,6 +32,11 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
+      - run: rm ./config/database.yml
+      - run: mv ./config/database.yml.ci ./config/database.yml
+      - run: bundle exec rake db:create RAILS_ENV=test
+      - run: bundle exec rake db:migrate RAILS_ENV=test
+      
       - run:
           name: Database Setup
           command: |
