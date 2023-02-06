@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: ls db
+      - run: ls db/migrate
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
