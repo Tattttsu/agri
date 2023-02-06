@@ -30,7 +30,7 @@ jobs:
           cache-key: "yarn.lock"
       - run:
           name: rspec
-          command: rails rspec
+          command: rspec
 
 workflows:
   version: 2
