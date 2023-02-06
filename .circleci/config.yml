@@ -29,6 +29,10 @@ jobs:
           pkg-manager: yarn
           cache-key: "yarn.lock"
       - run:
+          name: Database Setup
+          command: |
+            bundle exec rails db:create db:schema:load
+      - run:
           name: rspec
           command: rubocop
 
