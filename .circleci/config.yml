@@ -29,8 +29,8 @@ jobs:
           pkg-manager: yarn
           cache-key: "yarn.lock"
       - run:
-          name: puts rspec
-          command: ruby -v
+          name: rspec
+          command: rubocop
 
 workflows:
   version: 2
