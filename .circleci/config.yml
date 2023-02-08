@@ -40,7 +40,7 @@ jobs:
       # Run rspec in parallel
       - run:
           name: rubocop
-          command: rubocop
+          command: bundle exec rubocop
 
 workflows:
   version: 2
