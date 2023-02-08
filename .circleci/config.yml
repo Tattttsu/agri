@@ -24,7 +24,6 @@ jobs:
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
       PGUSER: circleci-demo-ruby
-      PGPASSWORD: ""
       RAILS_ENV: test
     steps:
       - checkout
