@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'farmモデルのテスト', type: :model do
-    let(:user) { create(:user) }
-    let(:farm) { create(:farm, user_id: user.id) }
-
+  let(:user) { create(:user) }
+  let(:farm) { create(:farm, user_id: user.id) }
 
   describe 'バリデーション' do
     it 'nameが空だとNG' do

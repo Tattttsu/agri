@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, email: "test1@example.com") }
 
   describe 'ログインのテスト' do
     context '有効なログインの場合' do
       before do
         visit new_user_session_path
         fill_in 'メールアドレス', with: 'test1@example.com'
-        fill_in 'パスワード', with: '123456'
+        fill_in 'パスワード', with: "123456"
         click_button 'ログイン'
       end
       it 'ホームページにリダイレクトされる' do
