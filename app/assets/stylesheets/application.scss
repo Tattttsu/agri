@@ -77,3 +77,43 @@ img{
 .user-container{
   text-align: center;
 }
+/* ホームページ*/
+.outline {
+  text-align: center;
+  font-size: 1rem;
+  color: #F8F8FF;
+ }
+
+ .homeimage {
+  position: relative;
+  height: 500px
+ }
+
+ .homeimage img {
+  position: absolute;
+  top: -20px;
+  width: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  display:block
+ }
+
+ .titlecontainer {
+  position: absolute;
+  text-align: center;
+  top: 150px;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%,0%);
+  background-color: rgba(white,0.5)
+ }
+
+ .titlecontainer p{
+  font-size: 1rem;
+  font-weight: bold;
+ }
+
+ .title{
+  font-size: 4rem;
+  font-weight: bold;
+ }
