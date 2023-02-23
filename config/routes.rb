@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+  devise_for :users, :controllers =>
+    {
+      :registrations => 'users/registrations',
+      :sessions => 'users/sessions'
     }
 
   resources :users, only: [:show, :index] do
