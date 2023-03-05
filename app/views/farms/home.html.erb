@@ -17,6 +17,9 @@
     野菜直売所や売っている場所の投稿サイトです。<br>
     見つけた場所や宣伝したい場所を投稿し、<br>
     行きたい時にもすぐに探し出せます。<br>
+    <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+    <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+    <%= link_to '野菜販売所一覧', farms_path, class: "nav-link" %>
   </p>
   </div>
   <img src="/assets/home_farm.jpeg" alt="">
