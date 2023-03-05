@@ -6,7 +6,7 @@
  場所の名前を入れることによって、自動的に居場所がGoogle mapで検索され、地図に表示されます。<br>
  レスポンシブ対応しているのでスマホからもご確認いただけます。
 
- <img src="https://user-images.githubusercontent.com/100943868/222951831-a7308229-8922-45dd-901b-c36e75616cb1.png">
+ <img src="https://user-images.githubusercontent.com/100943868/222956477-f9cec8b0-f9c2-4204-8d95-f61070aca6b8.png">
  <img src= "https://user-images.githubusercontent.com/100943868/222951811-43e42981-093a-40ac-ad60-f122a0cf16ae.png">
  <img src= "https://user-images.githubusercontent.com/100943868/222951804-d7f958a2-5790-4226-8c2e-9171e24a1e5d.png">
 
