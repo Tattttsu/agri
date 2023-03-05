@@ -21,7 +21,7 @@ VegeTag.create([
 
 User.create!(
   email: 'init@com',
-  name: '初期ユーザー',
+  name: 'ユーザー',
   password: '123456'
 )
 
@@ -113,5 +113,19 @@ User.all.each do |user|
         高級なフルーツですが、傷や不揃いなどのB級品もあるので家庭用であれば安く購入することもできます。",
         image: File.open("./public/test_images/sayama.jpeg")}
     ]
+  )
+end
+15.times do |n|
+  TagRelation.create!(
+    farm_id: n + 1,
+    vege_tag_id: 1
+  )
+  TagRelation.create!(
+    farm_id: n + 1,
+    vege_tag_id: 10
+  )
+  TagRelation.create!(
+    farm_id: n + 1,
+    vege_tag_id: 11
   )
 end
