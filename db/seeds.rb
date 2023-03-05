@@ -28,12 +28,10 @@ User.create!(
 User.all.each do |user|
   user.farms.create!(
     [
-      { name: '岡山駅', address: '岡山駅', feature: '岡山駅にあります。'},
-      { name: '倉敷駅', address: '倉敷駅', feature: '倉敷駅にあります。'},
-      { name: '後楽園', address: '岡山後楽園', feature: '後楽園にあります。'},
-      { name: 'コンベンションセンター', address: '岡山コンベンションセンター', feature: '岡山コンベンションセンターにあります。'},
-      { name: 'グランヴィア', address: 'ホテルグランヴィア岡山', feature: 'ホテルにあります。'},
-      { name: 'イオンモール', address: 'イオンモール岡山', feature: 'イオン岡山にあります。'}
+      { name: '岡山駅',
+      address: '岡山駅',
+      feature: '岡山駅にあります。'
+      image: File.open("./public/野菜.jpeg")}
     ]
   )
 end
