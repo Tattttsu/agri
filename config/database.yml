@@ -24,7 +24,7 @@ production:
   <<: *default
     database: agri_production
     username: root
-  <% if Rails.application.credentials.database.present? %>
-    password: <%= Rails.application.credentials.db[:password] %>
-    host: <%= Rails.application.credentials.db[:hostname] %>
-  <% end %>
+    <% if Rails.application.credentials.database.present? %>
+      password: <%= Rails.application.credentials.db[:password] %>
+      host: <%= Rails.application.credentials.db[:hostname] %>
+    <% end %>
