@@ -29,6 +29,7 @@
   color: white !important;
   font-size: 10px;
   font-weight: 700;
+  position: relative;
 }
 
 .card{
@@ -77,3 +78,37 @@ img{
 .user-container{
   text-align: center;
 }
+/* ホームページ*/
+
+
+ .homeimage {
+  height: 500px;
+  position: relative;
+ }
+
+ .homeimage img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display:block
+ }
+
+ .titlecontainer {
+  position: absolute;
+  text-align: center;
+  top: 150px;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%,0%);
+  background-color: rgba(white,0.5)
+ }
+
+ .titlecontainer p{
+  font-size: 1rem;
+  font-weight: bold;
+ }
+
+ .title{
+  font-size: 4rem;
+  font-weight: bold;
+ }
