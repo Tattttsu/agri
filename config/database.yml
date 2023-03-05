@@ -22,9 +22,7 @@ test:
 
 production:
   <<: *default
-  <% if Rails.application.credentials.database.present? %>
-    database: agri_production
-    username: root
-    password: <%= Rails.application.credentials.db[:password] %>
-    host: <%= Rails.application.credentials.db[:hostname] %>
-  <% end %>
+  database: agri_production
+  username: root
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
