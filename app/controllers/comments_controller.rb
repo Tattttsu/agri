@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
     @comment = @farm.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash.now[:notice] = 'コメントを投稿しました'
       render :comment
     else
       render "farms/show"

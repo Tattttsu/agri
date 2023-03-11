@@ -19,9 +19,10 @@ class FarmsController < ApplicationController
     @farm = current_user.farms.new(farm_params)
     @farm.user_id = current_user.id
     if @farm.save
-      flash[:success] = "投稿しました"
+      flash[:notice] = "投稿しました"
       redirect_to @farm
     else
+      flash.now[:alert] = "投稿に失敗しました"
       render "new"
     end
   end
@@ -34,10 +35,10 @@ class FarmsController < ApplicationController
     @farm = Farm.find(params[:id])
     if @farm.update(farm_params)
       redirect_to @farm
-      flash[:success] = "更新しました"
+      flash[:notice] = "更新しました"
     else
-      render "farms/edit"
       flash.now[:alert] = "更新に失敗しました"
+      render "farms/edit"
     end
   end
 
