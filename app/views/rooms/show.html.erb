@@ -9,13 +9,14 @@
       <% if m.user_id == current_user.id %>
         <div class="chat text-right px-3">
           <p>
-            <%= m.body %>
+            <%= safe_join(m.body.split("\n"),tag(:br))  %>
           </p>
         </div>
       <% else %>
         <div class="chat px-3">
           <p>
             <%= m.body %>
+            <%= safe_join(m.body.split("\n"),tag(:br)) %>
           </p>
         </div>
       <% end %>
@@ -24,7 +25,7 @@
   <div class="chat-form-box">
     <%= form_with model: @message do |f| %>
       <div class="chat-form-group text-center">
-        <%= f.text_field :body, class: "w-75" %>
+        <%= f.text_area :body, class: "w-75", rows: "1" %>
         <%= f.hidden_field :room_id, :value => @room.id %>
         <%= f.submit "送信" %>
       </div>
