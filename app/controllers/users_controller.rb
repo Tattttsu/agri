@@ -6,9 +6,6 @@ class UsersController < ApplicationController
     @farms = @user.farms
   end
 
-  def home
-  end
-
   def index
     if current_user.present?
       @users = User.where.not(id: current_user.id)
