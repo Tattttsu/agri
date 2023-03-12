@@ -11,10 +11,12 @@
         <li class="nav-item">
           <%= link_to '野菜販売所一覧', farms_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-            <%= link_to '投稿フォーム', new_farm_path, class: "nav-link" %>
-          </li>
         <% if user_signed_in? %>
+          <% if current_user.role == 1%>
+            <li class="nav-item">
+              <%= link_to '販売所の投稿', new_farm_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to 'マイページ', user_path(current_user), class: "nav-link" %>
           </li>
