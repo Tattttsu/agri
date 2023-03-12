@@ -29,6 +29,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def after_sign_up_path_for(resource)
+    if resource.role == 1
+      new_farm_path
+    else
+      super(resource)
+    end
+  end
+
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
