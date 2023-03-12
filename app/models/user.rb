@@ -49,9 +49,18 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by(name: "テストユーザー", email: "example@gmail.com") do |user|
-      user.password = "123456"
+    find_or_create_by(email: "example@gmail.com") do |user|
+      user.name = "テストユーザー",
+                  user.role = 0,
+                  user.password = "123456"
     end
   end
 
+  def self.guest_farmer
+    find_or_create_by(email: "example2@gmail.com") do |user|
+      user.name = "農家用テスト",
+                  user.password = "123456",
+                  user.role = 1
+    end
+  end
 end

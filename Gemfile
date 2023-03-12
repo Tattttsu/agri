@@ -79,6 +79,7 @@ gem "net-smtp"
 gem 'net-imap'
 gem 'net-pop'
 gem 'webdriver'
+gem 'cancancan'
 
 group :production do
   gem 'unicorn'

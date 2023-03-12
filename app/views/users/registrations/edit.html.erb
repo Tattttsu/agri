@@ -18,6 +18,11 @@
       <%= f.file_field :icon, class: "input w-50 m-auto pb-5" %>
     </div>
 
+    <div class="field">
+      <%= f.check_box :role %>
+      <%= f.label :"農家として登録" %>
+    </div>
+
     <div class="actions">
       <%= f.submit "編集", class: "btn btn-primary w-50 p-3" %>
     </div>

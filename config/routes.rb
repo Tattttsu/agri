@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+    post 'users/guest_farmer_sign_in', to: 'users/sessions#new_guest_farmer'
   end
 
   devise_for :users, :controllers =>

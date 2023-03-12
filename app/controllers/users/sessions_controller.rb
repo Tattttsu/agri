@@ -4,4 +4,10 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to root_path, notice: "テストログイン"
   end
+
+  def new_guest_farmer
+    user = User.guest_farmer
+    sign_in user
+    redirect_to root_path, notice: "テストログイン"
+  end
 end

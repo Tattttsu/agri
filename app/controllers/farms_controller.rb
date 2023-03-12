@@ -1,4 +1,5 @@
 class FarmsController < ApplicationController
+  authorize_resource
   before_action :authenticate_user! ,only: ["new", "create", "destroy", "edit", "update"]
   def index
     @farms = Farm.all
@@ -13,6 +14,7 @@ class FarmsController < ApplicationController
 
   def new
     @farm = Farm.new
+    authorize! :create, @farm
   end
 
   def create
