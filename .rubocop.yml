@@ -3,3 +3,9 @@ Metrics/BlockLength:
   Exclude:
     - 'db/seeds.rb'
     - 'db/schema.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
