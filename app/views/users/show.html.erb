@@ -19,7 +19,6 @@
         <% if @user == current_user %>
           <p class="lead text-muted"><%= current_user.name %>でサインインしています</p>
           <%= link_to "編集", edit_user_registration_path(@user), class: "btn btn-primary" %>
-          <%= link_to "メッセージ", rooms_path, class: "btn btn-primary" %>
         <% else %>
           <% if @user.is_followed_by?(current_user) %>
             <%=link_to "フォロー解除", user_relationships_path(@user), class: "btn btn-danger", method: :delete %>

@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <% @another_entries.each do |entry| %>
+  <% @another_entries.reverse.each do |entry| %>
     <%= link_to room_path(entry.room) do %>
       <div class="message-card">
         <div class="message-card-body w-100">
