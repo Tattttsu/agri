@@ -47,13 +47,14 @@ http://agriconnect.xyz/ <br>
 - Githubへのpush時に、RspecとRubocopが自動で実行されます。
 
 # ER図
-<img src="https://user-images.githubusercontent.com/100943868/222953468-b945d653-6234-4b81-892d-29d0477cfbac.png">
+<img src="https://user-images.githubusercontent.com/100943868/225305440-74b7f463-b27f-4bbb-8c58-b76c207cdd0d.png">
 
 # 機能一覧
 - ユーザー登録、ログイン機能(devise)
 - 投稿機能
   - 画像投稿
   - google map表示
+- メッセージ機能(Ajax)  
 - いいね機能(Ajax)
 - コメント機能(Ajax)
 - フォロー機能(Ajax)
