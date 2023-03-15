@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -42,25 +44,9 @@ class User < ApplicationRecord
       params.delete(:password)
       params.delete(:password_confirmation)
     end
-
     result = update_attributes(params, *options)
     clean_up_passwords
     result
   end
 
-  def self.guest
-    find_or_create_by(email: "example@gmail.com") do |user|
-      user.name = "テストユーザー",
-                  user.role = 0,
-                  user.password = "123456"
-    end
-  end
-
-  def self.guest_farmer
-    find_or_create_by(email: "example2@gmail.com") do |user|
-      user.name = "農家用テスト",
-                  user.password = "123456",
-                  user.role = 1
-    end
-  end
 end

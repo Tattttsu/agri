@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_12_020701) do
+ActiveRecord::Schema.define(version: 2023_03_12_060633) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2023_03_12_020701) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["farm_id"], name: "index_comments_on_farm_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "farms", force: :cascade do |t|
@@ -45,6 +54,16 @@ ActiveRecord::Schema.define(version: 2023_03_12_020701) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -53,6 +72,11 @@ ActiveRecord::Schema.define(version: 2023_03_12_020701) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tag_relations", force: :cascade do |t|
@@ -87,9 +111,13 @@ ActiveRecord::Schema.define(version: 2023_03_12_020701) do
 
   add_foreign_key "comments", "farms"
   add_foreign_key "comments", "users"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "farms", "users"
   add_foreign_key "likes", "farms"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "tag_relations", "farms"
   add_foreign_key "tag_relations", "vege_tags"
 end

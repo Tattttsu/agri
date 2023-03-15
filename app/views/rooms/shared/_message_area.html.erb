@@ -1,0 +1,19 @@
+<div class="message-container">
+  <div class="chat text-right">
+  <% @room.messages.each do |m| %>
+    <% if m.user_id == current_user.id %>
+      <div class="px-3">
+        <p style='text-align: left;'>
+          <%= safe_join(m.body.split("\n"),tag(:br)) %>
+        </p>
+      </div>
+    <% else %>
+      <div class="text-left px-3">
+        <p>
+          <%= safe_join(m.body.split("\n"),tag(:br)) %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

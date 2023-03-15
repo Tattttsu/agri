@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <div class="message-title">
+    <h2>
+      <%= ("#{@another_entry.user.name}さんとのメッセージ") %>
+    </h2>
+  </div>
+  <div id="message">
+    <%= render "rooms/shared/message_area", message: @message, messages: @messages, room: @room %>
+  </div>
+  <div class="chat-form-box">
+  <%= form_with(model: @message, local: false) do |f| %>
+    <div class="chat-form-group text-center">
+      <%= f.text_area :body, class: "w-75", rows: "1" %>
+      <%= f.hidden_field :room_id, value:  @room.id %>
+      <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>

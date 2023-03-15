@@ -1,0 +1,29 @@
+<div class="container py-5">
+  <% @another_entries.reverse.each do |entry| %>
+    <%= link_to room_path(entry.room) do %>
+      <div class="message-card">
+        <div class="message-card-body w-100">
+          <div class="d-flex">
+            <div class=user-icon>
+              <object>
+                <%= link_to user_path(entry.user) do %>
+                  <% if entry.user.icon.present? %>
+                    <%= image_tag entry.user.icon.url %>
+                  <% else %>
+                    <%= image_tag "/icon.jpeg" %>
+                  <% end %>
+                <% end %>
+              </object>
+            </div>
+            <div class="user-name py-4">
+              <%= entry.user.name %>
+            </div>
+          </div>
+          <div class="message">
+            <%= Message.find_by(id: entry.room.message_ids.last)&.body %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

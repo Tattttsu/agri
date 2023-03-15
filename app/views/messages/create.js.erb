@@ -1,0 +1,2 @@
+$('.chat').append("<div class='px-3 new-message'><p style='text-align: left;'><%= safe_join(@message.body.split("\n"),tag(:br)) %></p></div>");
+$("textarea").val('');
