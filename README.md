@@ -1,13 +1,16 @@
 # AgriConnect
  野菜売り場や直売所の投稿サイトです。<br>
  野菜の直売所を探したい時に探せ、お客さんに来てほしい農家の方はこのサイトに投稿することによって、いろんな方に見てもらうことができます。<br>
+ 投稿に対してのコメントだけでなく、ユーザーページから投稿したユーザーと個別にメッセージで連絡を取ることができます。
  
  また、農家の方に限らず投稿できるので、見つけた直売所を投稿することもできます。<br>
  場所の名前を入れることによって、自動的に居場所がGoogle mapで検索され、地図に表示されます。<br>
  レスポンシブ対応しているのでスマホからもご確認いただけます。
+ 
+野菜売り場を投稿できるのは農家として登録したアカウントとなるので、テストログインして投稿する場合は「テストログイン（農家）」からログインください。
 
- <img src="https://user-images.githubusercontent.com/100943868/222956477-f9cec8b0-f9c2-4204-8d95-f61070aca6b8.png">
- <img src= "https://user-images.githubusercontent.com/100943868/222951811-43e42981-093a-40ac-ad60-f122a0cf16ae.png">
+ <img src= "https://user-images.githubusercontent.com/100943868/226512813-8c68af0c-0ef5-4488-95dc-4a1789acfcf1.png">
+ <img src= "https://user-images.githubusercontent.com/100943868/226512996-2cdb190a-2fab-4552-a9ca-4de68afad0f5.png">
  <img src= "https://user-images.githubusercontent.com/100943868/222951804-d7f958a2-5790-4226-8c2e-9171e24a1e5d.png">
 
 # 作成の経緯
